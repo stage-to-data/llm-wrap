@@ -10,6 +10,7 @@ class OpenAIWrapper(LLMWrapper):
         self.model = model
         self.options = kwargs.get("options", {})
         self.api_key = kwargs.get("api_key", "")
+        self.system_prompt = kwargs.get("system_prompt", "Please answer my questions as precisely and concisely as possible.")
 
         openai.api_key = self.api_key
         self.client = openai.OpenAI(api_key=openai.api_key)
@@ -35,7 +36,7 @@ class OpenAIWrapper(LLMWrapper):
 
     def _process_prompt(self, prompt):
         messages = [
-            {"role": "system", "content": "You are an AI that extracts and organizes text from images."},
+            {"role": "system", "content": self.system_prompt},
             {"role": "user", "content": [{"type": "text", "text": str(prompt.content)}]}
         ]
 
