@@ -28,4 +28,3 @@ class Prompt:
                 base64_image = base64.b64encode(image_file.read()).decode("utf-8")
             ret.append(base64_image)
         return ret
-    

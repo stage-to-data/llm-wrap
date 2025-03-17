@@ -7,7 +7,8 @@ long_description= """
 
 required = [
     "openai",
-    "ollama"
+    "ollama",
+    "tiktoken"
 ]
 
 setup(
