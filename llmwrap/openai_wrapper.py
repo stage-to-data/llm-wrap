@@ -18,25 +18,18 @@ class OpenAIWrapper(LLMWrapper):
         super().process()
         
         messages = [
-        {"role": "system", "content": "You are an AI that extracts and organizes text from images."},
-        {"role": "user", "content": [{"type": "text", "text": str(prompt.content)}]}
+            {"role": "system", "content": "You are an AI that extracts and organizes text from images."},
+            {"role": "user", "content": [{"type": "text", "text": str(prompt.content)}]}
         ]
 
         if len(prompt.images) > 0:
-            messages['content'].append({
+            messages[1]['content'].append({
                 "type" : "image_url", "image_url" : {"url" : f"data:image/png;base64,{prompt.get_image_array()[0]}"}
             })
-
-
-#       with open(image_path, "rb") as image_file:
-#       base64_image = base64.b64encode(image_file.read()).decode("utf-8")
-        print(type(messages))
-        print(type(messages[0])) 
 
         response = self.client.chat.completions.create(
             model = self.model,
             messages = messages,
-            # options = self.options
             max_tokens = 1500
         )
 

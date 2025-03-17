@@ -3,17 +3,16 @@ import os
 from utils import read_txt
 
 # Get prompt:
-prompot_source = os.path.join(os.getcwd(), "examples", "tutorial", "assets", "example_prompt.txt")
-prompt=llmwrap.Prompt(prompot_source)
+prompt_source = os.path.join(os.getcwd(), "examples", "tutorial", "assets", "example_prompt.txt")
+prompt=llmwrap.Prompt(prompt_source, options = {"name" : "Jacob", "question" : "How are you?"})
 
-#image_source = os.path.join(os.getcwd(), "examples", "tutorial", "assets", "moleman.jpeg")
-#prompt = llmwrap.Prompt(prompot_source, images = [image_source])
-
-#prompt = llmwrap.Prompt("How are you?")
+image_source = os.path.join(os.getcwd(), "examples", "tutorial", "assets", "moleman.jpeg")
+prompt_source = os.path.join(os.getcwd(), "examples", "tutorial", "assets", "describe.txt")
+prompt = llmwrap.Prompt(prompt_source, images = [image_source])
 
 # Get the LLM wrappers:
 api_key = read_txt(os.path.join(os.getcwd(), "examples", "tutorial", "assets", "openai_key.txt"))
-multimodal_model = llmwrap.OpenAIWrapper("gpt-4o")
+multimodal_model = llmwrap.OpenAIWrapper("gpt-4o", api_key = api_key)
 
 # Get the response:
 response = multimodal_model.process(prompt)
