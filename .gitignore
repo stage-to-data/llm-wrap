@@ -1,0 +1,7 @@
+venv
+llmwrap.egg-info
+build
+examples/tutorial/assets/openai_key.txt
+examples/tutorial/__pycache__
+examples/tests
+*.DS_Store

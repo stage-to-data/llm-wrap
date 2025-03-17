@@ -1,0 +1,2 @@
+My name is &&name. I'd like you to always call me &&name. &&question
+Please answer in the style of H.P. Lovecraft.
