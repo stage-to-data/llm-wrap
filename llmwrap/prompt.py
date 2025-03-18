@@ -7,6 +7,7 @@ class Prompt:
         self.source = None
         self.options = kwargs.get("options", {})
         self.images = kwargs.get("images", [])
+        self.output_structure = kwargs.get("output_structure", None)
 
         if os.path.isfile(source):
             self.source = read_txt(source)
