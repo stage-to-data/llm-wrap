@@ -11,6 +11,7 @@ class OpenAIWrapper(LLMWrapper):
         self.options = kwargs.get("options", {})
         self.api_key = kwargs.get("api_key", "")
         self.system_prompt = kwargs.get("system_prompt", "Please answer my questions as precisely and concisely as possible.")
+        self.max_tokens = kwargs.get("max_tokens", 1500)
 
         openai.api_key = self.api_key
         self.client = openai.OpenAI(api_key=openai.api_key)
@@ -62,7 +63,7 @@ class OpenAIWrapper(LLMWrapper):
         response = self.client.chat.completions.create(
             model = self.model,
             messages = messages,
-            max_tokens = 1500
+            max_tokens = self.max_tokens
         )
 
         if response.choices:
