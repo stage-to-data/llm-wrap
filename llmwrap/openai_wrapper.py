@@ -61,19 +61,24 @@ class OpenAIWrapper(LLMWrapper):
         messages = self._process_prompt(prompt)
 
         if prompt.output_structure == None:
-            response = self.client.chat.completions.create(
-                model = self.model,
-                messages = messages,
-                max_tokens = self.max_tokens
-            )
+            try:
+                response = self.client.chat.completions.create(
+                    model = self.model,
+                    messages = messages,
+                    max_tokens = self.max_tokens
+                )
+            except openai.RateLimitError as e:
+                return None
         else:
-            response = self.client.beta.chat.completions.parse(
-                model = self.model,
-                messages = messages,
-                max_tokens = self.max_tokens,
-                response_format = prompt.output_structure 
-            )
-
+            try:
+                response = self.client.beta.chat.completions.parse(
+                    model = self.model,
+                    messages = messages,
+                    max_tokens = self.max_tokens,
+                    response_format = prompt.output_structure 
+                )
+            except openai.RateLimitError as e:
+                return None
         if response.choices:
             rep = super()._process_end(response.choices[0].message.content, prompt)
         else:
