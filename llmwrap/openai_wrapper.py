@@ -67,7 +67,8 @@ class OpenAIWrapper(LLMWrapper):
                     messages = messages,
                     max_tokens = self.max_tokens
                 )
-            except openai.RateLimitError as e:
+            except Exception as e:
+                print(e)
                 return None
         else:
             try:
@@ -77,7 +78,8 @@ class OpenAIWrapper(LLMWrapper):
                     max_tokens = self.max_tokens,
                     response_format = prompt.output_structure 
                 )
-            except openai.RateLimitError as e:
+            except Exception as e:
+                print(e)
                 return None
         if response.choices:
             rep = super()._process_end(response.choices[0].message.content, prompt)
