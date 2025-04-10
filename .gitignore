@@ -4,4 +4,5 @@ build
 examples/tutorial/assets/openai_key.txt
 examples/tutorial/__pycache__
 examples/tests
+/Users/antonioslagarias/llm-wrap/examples/tutorial/assets/claude_key.txt
 *.DS_Store
