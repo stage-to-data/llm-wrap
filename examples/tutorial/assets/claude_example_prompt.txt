@@ -1,0 +1,5 @@
+Please extract all the text you see in this theater program image.
+Organize it by sections, maintaining the original structure as much as possible.
+Include titles, cast lists, show descriptions, dates, and any other textual information. Do not change or modify the information in any way.
+Make sure all the text is extracted.
+Format the information clearly in markdown, maintaining the hierarchical structure.
