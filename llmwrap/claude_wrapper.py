@@ -29,7 +29,7 @@ class ClaudeWrapper(LLMWrapper):
                 "type": "image",
                 "source": {
                     "type": "base64",
-                    "media_type": "image/png ",
+                    "media_type": "image/png",
                     "data": prompt.get_image_array()[0]
                 }
             })
