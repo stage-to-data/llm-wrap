@@ -35,12 +35,13 @@ class ClaudeWrapper(LLMWrapper):
                 }
             })
         
-        message = self.client.messages.create(
-            model = self.model,
-            max_tokens = self.max_tokens,
-            messages = messages
-        )
-
-        rep = super()._process_end(message.content[0].text, prompt)
-
-        return rep
+        try:
+            message = self.client.messages.create(
+                model = self.model,
+                max_tokens = self.max_tokens,
+                messages = messages
+            )
+            rep = super()._process_end(message.content[0].text, prompt)
+            return rep
+        except Exception as e:
+            return {"content": str(e), "type" : "error"}
