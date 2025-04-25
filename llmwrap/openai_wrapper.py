@@ -68,8 +68,7 @@ class OpenAIWrapper(LLMWrapper):
                     max_tokens = self.max_tokens
                 )
             except Exception as e:
-                print(e)
-                return None
+                return {"content": str(e), "type" : "error"}
         else:
             try:
                 response = self.client.beta.chat.completions.parse(
@@ -79,8 +78,7 @@ class OpenAIWrapper(LLMWrapper):
                     response_format = prompt.output_structure 
                 )
             except Exception as e:
-                print(e)
-                return None
+                return {"content": str(e), "type" : "error"}
         if response.choices:
             rep = super()._process_end(response.choices[0].message.content, prompt)
         else:

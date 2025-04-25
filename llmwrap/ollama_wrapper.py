@@ -17,20 +17,21 @@ class OllamaWrapper(LLMWrapper):
         if len(prompt.images) > 0:
             messages['images'] = prompt.get_image_array()
 
-        if prompt.output_structure == None:
-            response = chat(
-                model = self.model,
-                messages = [messages],
-                options = self.options
-            )
-        else:
-            response = chat(
-                model = self.model,
-                messages = [messages],
-                options = self.options,
-                format = prompt.output_structure.model_json_schema()
-            )
-
-        rep = super()._process_end(response.message.content, prompt)
-
-        return rep
+        try:
+            if prompt.output_structure == None:
+                response = chat(
+                    model = self.model,
+                    messages = [messages],
+                    options = self.options
+                )
+            else:
+                response = chat(
+                    model = self.model,
+                    messages = [messages],
+                    options = self.options,
+                    format = prompt.output_structure.model_json_schema()
+                )
+            rep = super()._process_end(response.message.content, prompt)
+            return rep
+        except Exception as e:
+            return {"content": str(e), "type" : "error"}
