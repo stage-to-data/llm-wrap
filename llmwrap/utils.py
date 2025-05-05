@@ -31,3 +31,16 @@ def check_dir_exists(filepath):
     """Check if folder exists, if not, create it."""
     if os.path.isdir(os.path.dirname(filepath)) == False:
         os.makedirs(os.path.dirname(filepath))
+
+def read_json(path : str) -> dict:
+    """Read a json file"""
+    if os.path.isfile(path):
+        if os.path.splitext(path)[1].lower() == ".json":
+            with open(path, 'r') as f:
+                return json.load(f)
+        else:
+            print(f"{path} is not a json file.")
+            return None
+    else:
+        print(f"{path} doesn't exist.")
+        return None

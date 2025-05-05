@@ -4,6 +4,7 @@ import tiktoken
 import base64
 import json
 import os
+import mimetypes
 
 class ClaudeWrapper(LLMWrapper):
 
@@ -15,7 +16,7 @@ class ClaudeWrapper(LLMWrapper):
         self.client = Anthropic(api_key=self.api_key)
         self.name = f"claude_{self.model}"
         self.max_tokens = kwargs.get("max_tokens", 4000)
-        self.media_type = kwargs.get("media_type", "image/jpg")
+        self.media_type = kwargs.get("media_type", "image/jpeg")
 
     def process(self, prompt):
         super().process()
@@ -26,11 +27,15 @@ class ClaudeWrapper(LLMWrapper):
         }]
 
         if len(prompt.images) > 0:
+            mime, encoding = mimetypes.guess_type(prompt.images[0])
+            if mime not in ['image/jpeg', 'image/png', 'image/gif', 'image/webp']:
+                mime = self.media_type
+
             messages[0]["content"].append({
                 "type": "image",
                 "source": {
                     "type": "base64",
-                    "media_type": self.media_type,
+                    "media_type": mime,
                     "data": prompt.get_image_array()[0]
                 }
             })

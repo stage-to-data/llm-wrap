@@ -3,7 +3,6 @@ from .utils import write_json
 from datetime import datetime
 import uuid
 
-
 class Response:
     def __init__(self, content, prompt, wrapper):
         self.content = content
@@ -27,5 +26,7 @@ class Response:
 
         current_time_str = datetime.now().strftime("%Y-%m-%d-%H-%M")
 
-        write_json(os.path.join(dest, f"{current_time_str}_{self.uuid}.json"), out)
+        file_path = os.path.join(dest, f"{current_time_str}_{self.uuid}.json")
+        write_json(file_path, out)
 
+        return file_path

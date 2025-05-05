@@ -1,0 +1,26 @@
+{
+    "content": {
+        "id": "msgbatch_012c6R4hfh8DHHM5Q3wSzG8Y",
+        "archived_at": null,
+        "cancel_initiated_at": null,
+        "created_at": "2025-05-05T12:12:10.359112Z",
+        "ended_at": null,
+        "expires_at": "2025-05-06T12:12:10.359112Z",
+        "processing_status": "in_progress",
+        "request_counts": {
+            "canceled": 0,
+            "errored": 0,
+            "expired": 0,
+            "processing": 2,
+            "succeeded": 0
+        },
+        "results_url": null,
+        "type": "message_batch"
+    },
+    "process_time": 0.3248431670072023,
+    "model": "claude_claude-3-7-sonnet-20250219",
+    "prompts": {},
+    "uuid": "8f59b80f-f94f-43ba-8c1b-0efd301309df",
+    "26cb3776-288a-4646-aad9-470926370b87": "Please describe this image.",
+    "9611eae1-51d0-4bc8-83e4-afd3a5d51532": "Please describe this image."
+}
