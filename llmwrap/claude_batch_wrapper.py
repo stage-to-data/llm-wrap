@@ -25,12 +25,12 @@ class BatchClaudeWrapper(BatchLLMWrapper):
     def submit_tasks(self, prompts):
         super().submit_tasks()
 
-        prompts_and_ids = {}
+        prompts_and_ids = []
         requests = []
 
         for prompt in prompts:
             request_id = self.get_request_id()
-            prompts_and_ids[request_id] = prompt
+            prompts_and_ids.append({"id" : request_id, "prompt" : prompt})
 
             messages = [{
                 "role": "user",

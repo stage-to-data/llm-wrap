@@ -20,12 +20,12 @@ class BatchResponse:
             "content": self.content,
             "process_time": self.process_time,
             "model": self.wrapper.name,
-            "prompts": {},
+            "prompts": [],
             "uuid": self.uuid
         }
 
-        for prompt in self.prompts:
-            out[prompt] = self.prompts[prompt].content
+        for item in self.prompts:
+            out["prompts"].append({"id" : item["id"], "content" : item["prompt"].content})
 
         current_time_str = datetime.now().strftime("%Y-%m-%d-%H-%M")
 
