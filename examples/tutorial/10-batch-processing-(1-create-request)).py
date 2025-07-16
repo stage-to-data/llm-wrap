@@ -10,7 +10,8 @@ api_key = read_txt(os.path.join(os.getcwd(), "examples", "tutorial", "assets", "
 
 # Get prompt and image sources:
 prompt_source = os.path.join(os.getcwd(), "examples", "tutorial", "assets", "describe.txt")
-image_sources = collect_files(os.path.join(os.getcwd(), "examples", "tutorial", "assets"), ["jpeg", "jpg"])
+# image_sources = collect_files(os.path.join(os.getcwd(), "examples", "tutorial", "assets"), ["jpeg", "jpg"])
+image_sources = collect_files("/Users/jacob/Desktop/test", ["jpeg", "jpg"])
 
 # Create a list of prompts:
 prompts = []

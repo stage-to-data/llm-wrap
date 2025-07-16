@@ -1,0 +1,65 @@
+{
+    "content": {
+        "id": "msgbatch_01YZyRvh64w4ZiFpuBSu4Ucp",
+        "archived_at": null,
+        "cancel_initiated_at": null,
+        "created_at": "2025-05-05T14:01:19.692690Z",
+        "ended_at": null,
+        "expires_at": "2025-05-06T14:01:19.692690Z",
+        "processing_status": "in_progress",
+        "request_counts": {
+            "canceled": 0,
+            "errored": 0,
+            "expired": 0,
+            "processing": 10,
+            "succeeded": 0
+        },
+        "results_url": null,
+        "type": "message_batch"
+    },
+    "process_time": 1.5321689170086756,
+    "model": "claude_claude-3-7-sonnet-20250219",
+    "prompts": [
+        {
+            "id": "4b655068-94de-463f-9909-23bcbc4e5601",
+            "content": "Please describe this image."
+        },
+        {
+            "id": "720d9a8f-afe8-4f58-aea9-cd69ec50269e",
+            "content": "Please describe this image."
+        },
+        {
+            "id": "c931bcef-7675-4ed8-b008-d460891d88cb",
+            "content": "Please describe this image."
+        },
+        {
+            "id": "1180f791-a0f9-4505-a624-760ab5fe5414",
+            "content": "Please describe this image."
+        },
+        {
+            "id": "ac261d7b-7605-4a08-803b-fcc011e488bf",
+            "content": "Please describe this image."
+        },
+        {
+            "id": "1f764b74-2525-4172-95ac-18d87b292c6f",
+            "content": "Please describe this image."
+        },
+        {
+            "id": "5ef58d0d-6caf-42e5-a73f-b10da152ed05",
+            "content": "Please describe this image."
+        },
+        {
+            "id": "55a620e1-9c2e-4166-9578-214371f85a45",
+            "content": "Please describe this image."
+        },
+        {
+            "id": "5ddd51a6-efa3-4a61-b078-68ad1bfee894",
+            "content": "Please describe this image."
+        },
+        {
+            "id": "49086735-8d0d-47c9-a086-e3fc925c76ff",
+            "content": "Please describe this image."
+        }
+    ],
+    "uuid": "2a0707ab-5c7e-4e66-b9ee-fb8dded56b40"
+}
