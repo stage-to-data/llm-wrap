@@ -23,7 +23,7 @@ prompt = llmwrap.Prompt(
 )
 
 # Now let's run the process:
-llm = llmwrap.OllamaWrapper("llama3.2:1b")
+llm = llmwrap.OllamaWrapper("gpt-oss:20b")
 response = llm.process(prompt)
 print(response.content)
 

@@ -1,5 +1,5 @@
 from .llm_wrapper import LLMWrapper
-from ollama import chat
+from ollama import chat, embeddings
 
 class OllamaWrapper(LLMWrapper):
 
@@ -35,3 +35,13 @@ class OllamaWrapper(LLMWrapper):
             return rep
         except Exception as e:
             return {"content": str(e), "type" : "error"}
+        
+    def embed(self, text):
+        try:
+            response = embeddings(
+                model = self.model or "nomic-embed-text",
+                prompt = text
+            )
+            return response["embedding"]
+        except Exception as e:
+            return {"error": str(e)}

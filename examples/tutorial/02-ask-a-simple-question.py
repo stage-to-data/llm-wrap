@@ -7,8 +7,8 @@ prompt = llmwrap.Prompt(prompt_source, options = {"name" : "Jacob", "question" :
 
 # Get some LLM wrappers:
 llms = [
-    llmwrap.OllamaWrapper("deepseek-r1:7b"),
-    llmwrap.OllamaWrapper("llama3.2:1b")
+    llmwrap.OllamaWrapper("gpt-oss:20b"),
+    llmwrap.OllamaWrapper("llama3.1:8b")
 ]
 
 # Get the answers:
