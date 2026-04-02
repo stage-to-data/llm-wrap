@@ -7,7 +7,7 @@ long_description= """
 
 required = [
     "openai",
-    "ollama==0.6.1",
+    "ollama",
     "tiktoken",
     "anthropic"
 ]
