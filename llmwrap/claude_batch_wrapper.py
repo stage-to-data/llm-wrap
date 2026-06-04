@@ -16,11 +16,12 @@ class BatchClaudeWrapper(BatchLLMWrapper):
         super().__init__(**kwargs)
         
         self.api_key = kwargs.get("api_key", "")
-        self.model = kwargs.get("model", "claude-3-7-sonnet-20250219")
+        self.model = kwargs.get("model", "claude-sonnet-4-6")
         # self.client = Anthropic(api_key=self.api_key)
         self.name = f"claude_{self.model}"
-        self.max_tokens = kwargs.get("max_tokens", 4000)
+        self.max_tokens = kwargs.get("max_tokens", 16000)
         self.media_type = kwargs.get("media_type", "image/jpg")
+        self.system_prompt = kwargs.get("system_prompt", None)
 
     def submit_tasks(self, prompts):
         super().submit_tasks()
@@ -50,13 +51,24 @@ class BatchClaudeWrapper(BatchLLMWrapper):
                         "data": prompt.get_image_array()[0]
                     }
                 })
+
+            system = None
+            if self.system_prompt:
+                system = [
+                    {
+                        "type": "text",
+                        "text": self.system_prompt,
+                        "cache_control": {"type": "ephemeral"}
+                    }
+                ]
             
             requests.append(Request(
                 custom_id = request_id,
                 params = MessageCreateParamsNonStreaming(
                     model = self.model,
                     max_tokens = self.max_tokens,
-                    messages = messages
+                    messages = messages,
+                    **({"system": system} if system else {}) 
                 )
             ))
         
